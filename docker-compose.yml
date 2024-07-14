@@ -1,0 +1,17 @@
+version: "3.3"
+   
+services:
+  #
+  tor_yggdrasil:
+    image: tor_yggdrasil:latest
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - "8118:8118"
+      - "9050:9050"
+      - "10765:10765"
+      - "10654:10654"
+      - "9001:9001"

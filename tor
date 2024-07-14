@@ -1,0 +1,6 @@
+RUN_DAEMON="no"
+CLEANUP_OLD_COREFILES=y
+
+if [ -e /etc/default/tor.vidalia ] && [ -x /usr/bin/vidalia ]; then
+	. /etc/default/tor.vidalia
+fi
