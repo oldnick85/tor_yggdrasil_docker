@@ -2,7 +2,7 @@
 ARG UBUNTU_VERSION=24.04
 
 FROM ubuntu:${UBUNTU_VERSION} as builder_yggdrasil
-ARG YGGDRASIL_VERSION=v0.5.8
+ARG YGGDRASIL_VERSION=v0.5.10
 RUN DEBIAN_FRONTEND=noninteractive\
     apt-get update &&\
     apt-get -y upgrade
