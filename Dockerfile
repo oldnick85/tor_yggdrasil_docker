@@ -48,7 +48,7 @@ RUN git clone --depth 1 --branch v0 \
  /UTILS/yggdrasil_get_keys
 
 # Clone peer discovery script for finding public Yggdrasil peers 
-RUN git clone --depth 1 --branch v4 \
+RUN git clone --depth 1 --branch v5 \
  https://github.com/oldnick85/yggdrasil_find_public_peers.git \
  /UTILS/yggdrasil_find_public_peers
 
