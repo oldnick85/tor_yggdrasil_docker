@@ -1,17 +1,18 @@
-version: "3.3"
-   
+version: "3.8"
+
 services:
-  #
   tor_yggdrasil:
     image: tor_yggdrasil:latest
-    privileged: true
+    container_name: tor_over_yggdrasil
     cap_add:
-      - NET_ADMIN
+      - NET_ADMIN  # Required for network tunnel management
+    security_opt:
+      - no-new-privileges:true  # Security enhancement - prevent privilege escalation
     devices:
-      - /dev/net/tun:/dev/net/tun
+      - /dev/net/tun:/dev/net/tun  # TUN device for Yggdrasil network interface
     ports:
-      - "8118:8118"
-      - "9050:9050"
-      - "10765:10765"
-      - "10654:10654"
-      - "9001:9001"
+      - "127.0.0.1:9050:9050/tcp"   # SOCKS5 proxy port (Tor) for application-level traffic
+      - "10654:10654/tcp" # Yggdrasil peer connections  
+    environment:
+      - YGGDRASIL_GENERATE_KEYS=true  # Generate new Yggdrasil keys on startup
+    restart: unless-stopped  # Auto-restart unless manually stopped
